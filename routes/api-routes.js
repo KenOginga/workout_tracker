@@ -29,7 +29,7 @@ module.exports = function(app){
 
     // POST route
     app.post("/api/workouts", function(req, res){
-        db.Workout.create({ day: Date.now })
+        db.Workout.create({ day: Date.now() })
         .then(data => {
             res.json(data);
         })
