@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
     day: Date,
-    exercise: [{
+    exercises: [{
         type: Schema.Types.ObjectId,
         ref: "Exercise"
     }],

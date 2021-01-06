@@ -29,7 +29,7 @@ module.exports = function(app){
 
     // POST route
     app.post("/api/workouts", function(req, res){
-        db.Workout.create({ day: Date.now() })
+        db.Workout.create({})
         .then(data => {
             res.json(data);
         })
@@ -45,7 +45,7 @@ module.exports = function(app){
             db.Workout.findOneAndUpdate(
                 {_id: req.params.id},
                 {
-                    $push: { exercise: data._id },
+                    $push: { exercises: data._id },
                     $inc: { totalDuration: data.duration }
                 },
                 { new: true }
