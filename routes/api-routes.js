@@ -6,7 +6,7 @@ module.exports = function(app){
 
     // GET route for getting all the workouts
     app.get("/api/workouts", function(req, res){
-        db.Workout.findAll({})
+        db.Workout.find({})
         .populate("exercises")
         .then(workoutData => {
             res.json(workoutData);
@@ -48,7 +48,7 @@ module.exports = function(app){
                     $push: { exercise: data._id },
                     $inc: { totalDuration: data.duration }
                 },
-                { new: true}
+                { new: true }
             )
         )
         .then(data => {
