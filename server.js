@@ -4,7 +4,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path")
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 const app = express();
 
@@ -18,7 +18,7 @@ require("./routes/api-routes.js")(app)
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", 
     { 
-        useNewUrlParser: true
+        useNewUrlParser: true,
         // useUnifiedTopology: true,
         // useCreateIndex: true,
         // useFindAndModify: false

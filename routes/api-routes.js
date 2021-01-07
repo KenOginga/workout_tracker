@@ -7,7 +7,6 @@ module.exports = function(app){
     // GET route for getting all the workouts
     app.get("/api/workouts", function(req, res){
         db.Workout.find({})
-        .populate("exercises")
         .then(workoutData => {
             res.json(workoutData);
         })
@@ -18,7 +17,6 @@ module.exports = function(app){
 
     app.get("/api/workouts/range", function(req, res){
         db.Workout.find({})
-        .populate("exercises")
         .then(workoutData => {
             res.json(workoutData)
         })
@@ -40,22 +38,11 @@ module.exports = function(app){
 
     // PUT route
     app.put("/api/workouts/:id", function (req, res){
-        db.Exercise.create(req.body)
-        .then((data) => 
-            db.Workout.findOneAndUpdate(
-                {_id: req.params.id},
-                {
-                    $push: { exercises: data._id },
-                    $inc: { totalDuration: data.duration }
-                },
-                { new: true }
-            )
-        )
-        .then(data => {
-            res.json(data);
+        db.Workout.findByIdAndUpdate(req.params.id,
+            { $push: { exercises: req.body}},
+            { new: true }
+            ).then(data => {
+                res.json(data);
         })
-        .catch(err => {
-            res.json(err)
-        });
     });
 };
