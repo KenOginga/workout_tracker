@@ -16,6 +16,8 @@ This application is a workout tracker that allows users to create, tracking and 
 # Screenshot
 ![workout_tracker_screenshot](https://user-images.githubusercontent.com/72943649/103958732-58254c80-5113-11eb-86d2-5d62460662a2.PNG)
 
+![workout_tracker_screenshot_chart](https://user-images.githubusercontent.com/72943649/103958794-8d319f00-5113-11eb-94e8-97926e237a66.PNG)
+
 
 # Installation
 Run npm install to install dependencies and node server.js to run the app in your localhost.
